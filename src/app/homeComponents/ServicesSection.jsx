@@ -3,6 +3,7 @@ import React from "react";
 import dbConnect from "@/lib/dbConnect";
 import { collectionNamesObj } from "@/lib/dbConnect";
 import { FaArrowRight } from "react-icons/fa";
+import Link from "next/link";
 
 export default async function ServicesSection() {
   const data = await dbConnect(collectionNamesObj.servicesCollection)
@@ -33,7 +34,12 @@ export default async function ServicesSection() {
                   Price: ${item.price}
                 </p>
               </div>
-              <FaArrowRight />
+              <Link
+                href={`/services/${item._id}`}
+                className="text-orange-600 font-bold"
+              >
+                <FaArrowRight />
+              </Link>
             </div>
           </div>
         );
